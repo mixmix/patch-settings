@@ -1,0 +1,30 @@
+{
+  "name": "patch-settings",
+  "version": "1.0.0",
+  "description": "localStorge based settings module for patch-* related apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mixmix/patch-settings.git"
+  },
+  "keywords": [
+    "patchcore",
+    "depject",
+    "settings"
+  ],
+  "author": "mixmix",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mixmix/patch-settings/issues"
+  },
+  "homepage": "https://github.com/mixmix/patch-settings#readme",
+  "dependencies": {
+    "depnest": "^1.3.0",
+    "lodash.get": "^4.4.2",
+    "lodash.merge": "^4.6.0",
+    "mutant": "^3.21.2"
+  }
+}
