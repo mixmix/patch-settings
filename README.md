@@ -81,7 +81,7 @@ Example:
 api.settings.sync.set({ 
   colors: {
     primary: 'pink',
-    secondary: 'teal
+    secondary: 'teal'
   }
 })
 // => undefined

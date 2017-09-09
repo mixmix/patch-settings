@@ -22,7 +22,6 @@ const create = (api) => {
 
   function getSync (path, fallback) {
     _initialise()
-
     if (!path) return _settings()
 
     return get(_settings(), path, fallback)
@@ -36,6 +35,7 @@ const create = (api) => {
   }
 
   function getObs (path, fallback) {
+    _initialise()
     if (!path) return _settings
 
     return computed(_settings, s => get(s, path, fallback))
