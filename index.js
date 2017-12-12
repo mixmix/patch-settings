@@ -1,6 +1,7 @@
 const nest = require('depnest')
 const { Value, computed } = require('mutant')
 const get = require('lodash.get')
+const set = require('lodash.set')
 const merge = require('lodash.merge')
 
 const STORAGE_KEY = 'patchSettings'
@@ -38,7 +39,16 @@ const create = (api) => {
     _initialise()
     if (!path) return _settings
 
-    return computed(_settings, s => get(s, path, fallback))
+    var obs = computed(_settings, s => get(s, path, fallback))
+    obs.set = function (value) {
+      if (value !== obs()) {
+        var updatedSettings = merge({}, _settings())
+        set(updatedSettings, path, value)
+        _settings.set(updatedSettings)
+      }
+    }
+
+    return obs
   }
 
   function _initialise () {
