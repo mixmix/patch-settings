@@ -1,6 +1,6 @@
 {
   "name": "patch-settings",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "localStorge based settings module for patch-* related apps",
   "main": "index.js",
   "scripts": {
