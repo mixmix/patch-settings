@@ -3,6 +3,7 @@ const { Value, computed } = require('mutant')
 const get = require('lodash.get')
 const set = require('lodash.set')
 const merge = require('lodash.merge')
+const deepEqual = require('deep-equal')
 
 const STORAGE_KEY = 'patchSettings'
 
@@ -39,7 +40,7 @@ const create = (api) => {
     _initialise()
     if (!path) return _settings
 
-    var obs = computed(_settings, s => get(s, path, fallback))
+    var obs = computed(_settings, s => get(s, path, fallback), {comparer: deepEqual})
     obs.set = function (value) {
       if (value !== obs()) {
         var updatedSettings = merge({}, _settings())

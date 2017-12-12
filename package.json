@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/mixmix/patch-settings#readme",
   "dependencies": {
+    "deep-equal": "^1.0.1",
     "depnest": "^1.3.0",
     "lodash.get": "^4.4.2",
     "lodash.merge": "^4.6.0",
