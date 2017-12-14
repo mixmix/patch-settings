@@ -99,7 +99,18 @@ api.settings.sync.get()
 
 ### `settings.obs.get`
 
-`(path=string, fallbacl=anyValue)`
+`(path=string, fallback=anyValue)`
 
 Similar to `settings.sync.get`, but returns a [Mutant](https://github.com/mmckegg/mutant) observeable. This can be given listeners which fire when part / all the state changes, or can be used when building views with Mutant.
 
+You can also call `.set(newValue)` on the observable and the setting at the specified path will be updated.
+
+```js
+const h = require('mutant/h')
+const language = api.settings.obs.get('app.language')
+
+h('select', {
+  value: language,
+  'ev-change' => (ev) => lanuage.set(ev.value)
+}, [options])
+```
