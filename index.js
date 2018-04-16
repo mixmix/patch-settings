@@ -2,7 +2,7 @@ const nest = require('depnest')
 const { Value, computed } = require('mutant')
 const get = require('lodash.get')
 const set = require('lodash.set')
-const merge = require('lodash.merge')
+const mergeWith= require('lodash.mergewith')
 const deepEqual = require('deep-equal')
 
 const STORAGE_KEY = 'patchSettings'
@@ -32,7 +32,11 @@ const create = (api) => {
   function setSync (newSettings) {
     _initialise()
 
-    const updatedSettings = merge({}, _settings(), newSettings)
+    const updatedSettings = mergeWith({}, _settings(), newSettings, (objVal, srcVal) => {
+      if (Array.isArray(srcVal)) {
+        return srcVal
+      }
+    })
     _settings.set(updatedSettings)
   }
 

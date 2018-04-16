@@ -74,7 +74,8 @@ api.settings.sync.get('colors.secondary', 'white')
 
 `(newSettings=object)`
 
-Uses [lodash/merge](https://lodash.com/docs/4.17.4#get) to recurssively merge newSettings into settings.
+Uses [lodash.mergewith](https://lodash.com/docs/4.17.5#mergeWith) to recurssively merge newSettings into settings.
+Note if the value being merged is an Array, this merge is set to _overwrite_ the current value (this is necessary otherwise merging short Arrays in leaves vestigal settings from previous long Arrays).
 
 Example:
 ```js
