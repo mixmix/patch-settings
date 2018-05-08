@@ -2,7 +2,7 @@ const nest = require('depnest')
 const { Value, computed } = require('mutant')
 const get = require('lodash.get')
 const set = require('lodash.set')
-const mergeWith= require('lodash.mergewith')
+const mergeWith = require('lodash.mergewith')
 const deepEqual = require('deep-equal')
 
 const STORAGE_KEY = 'patchSettings'
@@ -10,7 +10,7 @@ const STORAGE_KEY = 'patchSettings'
 const gives = nest({
   'settings.sync.get': true,
   'settings.sync.set': true,
-  'settings.obs.get': true,
+  'settings.obs.get': true
 })
 
 const create = (api) => {
@@ -19,7 +19,7 @@ const create = (api) => {
   return nest({
     'settings.sync.get': getSync,
     'settings.sync.set': setSync,
-    'settings.obs.get': getObs,
+    'settings.obs.get': getObs
   })
 
   function getSync (path, fallback) {
@@ -47,7 +47,7 @@ const create = (api) => {
     var obs = computed(_settings, s => get(s, path, fallback), {comparer: deepEqual})
     obs.set = function (value) {
       if (value !== obs()) {
-        var updatedSettings = merge({}, _settings())
+        var updatedSettings = mergeWith({}, _settings())
         set(updatedSettings, path, value)
         _settings.set(updatedSettings)
       }
@@ -69,7 +69,7 @@ const create = (api) => {
   }
 
   function _save (newSettings) {
-    localStorage[STORAGE_KEY]= JSON.stringify(newSettings)
+    localStorage[STORAGE_KEY] = JSON.stringify(newSettings)
   }
 }
 
